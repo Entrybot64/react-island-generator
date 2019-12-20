@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-island-generator/static/css/main.bbf4de13.chunk.css",
+    "main.js": "/react-island-generator/static/js/main.cc8f67bf.chunk.js",
+    "main.js.map": "/react-island-generator/static/js/main.cc8f67bf.chunk.js.map",
+    "runtime-main.js": "/react-island-generator/static/js/runtime-main.10ab240c.js",
+    "runtime-main.js.map": "/react-island-generator/static/js/runtime-main.10ab240c.js.map",
+    "static/js/2.9e56d936.chunk.js": "/react-island-generator/static/js/2.9e56d936.chunk.js",
+    "static/js/2.9e56d936.chunk.js.map": "/react-island-generator/static/js/2.9e56d936.chunk.js.map",
+    "index.html": "/react-island-generator/index.html",
+    "precache-manifest.8a93968d3b7e36fa58a969f7b77d5d79.js": "/react-island-generator/precache-manifest.8a93968d3b7e36fa58a969f7b77d5d79.js",
+    "service-worker.js": "/react-island-generator/service-worker.js",
+    "static/css/main.bbf4de13.chunk.css.map": "/react-island-generator/static/css/main.bbf4de13.chunk.css.map",
+    "static/js/2.9e56d936.chunk.js.LICENSE": "/react-island-generator/static/js/2.9e56d936.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.10ab240c.js",
+    "static/js/2.9e56d936.chunk.js",
+    "static/css/main.bbf4de13.chunk.css",
+    "static/js/main.cc8f67bf.chunk.js"
+  ]
+}
