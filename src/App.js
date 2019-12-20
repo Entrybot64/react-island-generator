@@ -3,6 +3,8 @@ import { Simplex2 } from 'tumult'
 import sn from 'spatial-noise'
 
 /**
+ * App
+ * @author Julien Ferluc 1635588
  * Composante qui gère l'affichage du Canvas à l'écran
  */
 export default class App extends Component {
@@ -27,7 +29,6 @@ export default class App extends Component {
 		// Loop sur chaque pixel de l'image dans l'axe des X et Y
 		for (var x = 0; x < canvas.width; x++) {
 			for (var y = 0; y < canvas.height; y++) {
-
 				// Nous récupérons la valeur du bruit associée à la coordonnée X et Y de notre image
 				// divisée par le scaler de notre terrain car le bruit est trop "petit"
 				var noise = Math.min(
@@ -44,10 +45,7 @@ export default class App extends Component {
 					cellRGBA(data, cell, 255, 239, 97, 255)
 				} else if (noise >= 0.3) {
 					// Variation de la couleur du gazon par un algoritme de bruit spatial
-					let grass = Math.min(
-						Math.max(sn.noise2f(x, y), 0.45),
-						0.55
-					)
+					let grass = Math.min(Math.max(sn.noise2f(x, y), 0.45), 0.55)
 					//	Gazon
 					cellRGBA(data, cell, 90 * grass, 180 * grass, 45 * grass, 255)
 				} else {
@@ -61,17 +59,13 @@ export default class App extends Component {
 		ctx.putImageData(image, 0, 0)
 	}
 	render() {
-		return (
-			<canvas
-				height={window.innerHeight}
-				width={window.innerWidth}
-				ref="canvas"
-			/>
-		)
+		return <canvas height={window.innerHeight} width={window.innerWidth} ref="canvas" />
 	}
 }
 
 /**
+ * cellRGBA
+ * @author Julien Ferluc 1635588
  * Fonction helper pour définir la couleur d'un pixel spécifique dans la structure de données d'une image
  * @param {*} data structure de donnée de l'image complète
  * @param {*} cell cellule que l'algorithme évalue présentement
@@ -79,6 +73,7 @@ export default class App extends Component {
  * @param {*} g valeur désirée pour le vert
  * @param {*} b valeur désirée pour le bleu
  * @param {*} a valeur désirée pour le channel alpha
+ * @returns {null}
  */
 let cellRGBA = (data, cell, r, g, b, a) => {
 	data[cell] = r
