@@ -71,6 +71,15 @@ export default class App extends Component {
 	}
 }
 
+/**
+ * Fonction helper pour définir la couleur d'un pixel spécifique dans la structure de données d'une image
+ * @param {*} data structure de donnée de l'image complète
+ * @param {*} cell cellule que l'algorithme évalue présentement
+ * @param {*} r valeur désirée pour le rouge
+ * @param {*} g valeur désirée pour le vert
+ * @param {*} b valeur désirée pour le bleu
+ * @param {*} a valeur désirée pour le channel alpha
+ */
 let cellRGBA = (data, cell, r, g, b, a) => {
 	data[cell] = r
 	data[cell + 1] = g
