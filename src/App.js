@@ -2,28 +2,48 @@ import React, { Component } from 'react'
 import { Simplex2 } from 'tumult'
 import sn from 'spatial-noise'
 
+/**
+ * Composante qui gère l'affichage du Canvas à l'écran
+ */
 export default class App extends Component {
+	/**
+	 * Lorsque la composante est initialisée
+	 * Génération du terrain et affichage du terrain sur le canvas
+	 */
 	componentDidMount() {
+		// Génération du bruit qui va affecter la génération du terrain
 		let terrain = new Simplex2(Math.random())
+		// Récupérer la référence au Canvas dans render()
 		let canvas = this.refs.canvas
 		let ctx = canvas.getContext('2d')
+		// Variable affecte la taille de l'application du bruit lors de la génération du terrain
 		const terrainScale = 500
 
+		// Le canvas ne permet pas de gérer facilement l'affichage de pixels simplement
+		// Nous allons générer une image et l'afficher sur le canvas
 		var image = ctx.createImageData(canvas.width, canvas.height)
 		var data = image.data
 
+		// Loop sur chaque pixel de l'image dans l'axe des X et Y
 		for (var x = 0; x < canvas.width; x++) {
 			for (var y = 0; y < canvas.height; y++) {
-				var value = Math.min(
+
+				// Nous récupérons la valeur du bruit associée à la coordonnée X et Y de notre image
+				// divisée par le scaler de notre terrain car le bruit est trop "petit"
+				var noise = Math.min(
 					Math.max(Math.abs(terrain.gen(x / terrainScale, y / terrainScale)), 0.2),
 					0.3
 				)
+
+				// Récupération du pixel individuel car la gestion des images dans le navigateur est un peu wonky
 				var cell = (x + y * canvas.width) * 4
 
-				if (value > 0.25 && value < 0.3) {
+				// Treshold avec cuttoff brusque pour simuler les différents aspects du terrain
+				if (noise > 0.25 && noise < 0.3) {
 					// Plage
 					cellRGBA(data, cell, 255, 239, 97, 255)
-				} else if (value >= 0.3) {
+				} else if (noise >= 0.3) {
+					// Variation de la couleur du gazon par un algoritme de bruit spatial
 					let grass = Math.min(
 						Math.max(sn.noise2f(x, y), 0.45),
 						0.55
@@ -37,6 +57,7 @@ export default class App extends Component {
 			}
 		}
 
+		// Rendu de l'image dans le canvas
 		ctx.putImageData(image, 0, 0)
 	}
 	render() {
